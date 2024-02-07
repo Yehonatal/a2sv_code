@@ -23,24 +23,26 @@ class I:
     def toSet(self):
         return set([c for c in input()])
 
+    def sign(self, num):
+        return num > 0
+
 
 i_obj = I()
 
 for _ in range(i_obj.inInt()):
-    n = i_obj.inInt()
-    if n < 4 or (n // 2) % 2 != 0:
-        print("NO")
-    else:
-        print("YES")
+    e = i_obj.inInt()
+    nums = i_obj.toList()
 
-        even = [2, 4]
-        odd = [1, 5]
+    ans = 0
+    i = 0
+    while i < e:
+        j = i
+        mx = nums[i]
 
-        for i in range(2, n//2):
-            even.append(even[i-2] + 6)
-            odd.append(odd[i-2] + 6)
+        while j < e and i_obj.sign(nums[i]) == i_obj.sign(nums[j]):
+            mx = max(nums[j], mx)
+            j += 1
+        i = j
+        ans += mx
 
-        output = even + odd
-        for num in output:
-            print(num, end=" ")
-        print()
+    print(ans)

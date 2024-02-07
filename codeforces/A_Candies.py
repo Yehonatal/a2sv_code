@@ -25,7 +25,6 @@ class I:
 
 
 i_obj = I()
-
 for _ in range(i_obj.inInt()):
     n = i_obj.inInt()
     for k in range(2, 36):
@@ -33,6 +32,8 @@ for _ in range(i_obj.inInt()):
 
         if n % den:
             continue
+
         x = n // den
         break
+
     print(x)
