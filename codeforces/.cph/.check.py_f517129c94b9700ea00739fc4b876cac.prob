@@ -1,0 +1,1 @@
+{"name":"Local: check","url":"/home/megazen/Development/A2SV/a2sv_code/codeforces/check.py","tests":[{"id":1707576495701,"input":"","output":"[3,2,1,0,1,0,0,1,2,2,1,0]"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/megazen/Development/A2SV/a2sv_code/codeforces/check.py","group":"local","local":true}
