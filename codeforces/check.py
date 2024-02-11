@@ -1,22 +1,25 @@
-def shortestToChar(s, c):
-    chars = [i for i, char in enumerate(s) if char == c]
-    # print(chars)
+import string
 
-    result = []
-    prev_limit = 0
-    for limit in chars:
-        # print(prev_limit, limit + 1)
-        # result.append([x for x in s[prev_limit:limit+1]])
-        result += [abs(i - limit)
-                   for i in range(prev_limit, prev_limit + len(s[prev_limit:limit+1]))]
-        # result.append([abs(i - limit)
-        #                for i in range(prev_limit, prev_limit + len(s[prev_limit:limit+1]))])
-        prev_limit = limit + 1
+
+def replaceDigits(s):
+    alphabet = list(string.ascii_lowercase)
+    alphabet_lower = {}
+
+    for i, char in enumerate(alphabet):
+        alphabet_lower[char] = i
+
+    result = ""
+    for i in range(len(s)):
+        if s[i].isdigit():
+            at = int(alphabet_lower[s[i-1]]) + int(s[i])
+            result += alphabet[at]
+        else:
+            result += s[i]
 
     return result
 
 
-s = "loveleetcode"
-c = "e"
-print(shortestToChar(s, c))
-# print("[3,2,1,0,1,0,0,1,2,2,1,0]")
+s = "a1c1e1"
+print(replaceDigits(s))
+s = "a1b2c3d4e"
+print(replaceDigits(s))
