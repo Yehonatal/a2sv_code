@@ -29,11 +29,15 @@ n = i_obj.inInt()
 boxes = i_obj.toList()
 boxes.sort()
 i, j = 0, 1
+count = 0
 
 while j < n:
     if boxes[i] < boxes[j]:
-        boxes[i] = "Inside"
-    i = j
+        count += 1
+        i = j
     j += 1
 
-print(len([x for x in boxes if x != 'Inside']))
+print(len(boxes) - count)
+
+# 4 2 4 3 8
+# 2 3 4 4 8

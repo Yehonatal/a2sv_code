@@ -25,20 +25,20 @@ class I:
 
 
 i_obj = I()
+n = i_obj.inInt()
 
-t = i_obj.inInt()
-for _ in range(t):
-    n, x1, y1, x2, y2 = i_obj.toList()
+lvl = 0
+cubes = 1
+counter = 1
 
-    # layer for the first point
-    a = min(x1, y1)
-    b = min(n-x1 + 1, n-y1 + 1)
-    later1 = min(a, b)
+while cubes <= n:
+    cubes = ((counter * counter) + counter) / 2
 
-    # layer for the second point
-    c = min(x2, y2)
-    d = min(n - x2 + 1, n - y2 + 1)
-    layer2 = min(c, d)
-    #  diff layer1 and layer 2
+    if cubes > n:
+        break
 
-    print(abs(later1 - layer2))
+    n = n - cubes
+    counter += 1
+    lvl += 1
+
+print(lvl)

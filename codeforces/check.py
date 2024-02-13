@@ -1,25 +1,15 @@
-import string
+def largestPerimeter(nums):
+    nums.sort()
+    res = 0
+
+    for i in range(len(nums)-2):
+        if nums[i] + nums[i+1] > nums[i+2]:
+            res = max(res, sum(nums[i:i+3]))
+
+    return res
 
 
-def replaceDigits(s):
-    alphabet = list(string.ascii_lowercase)
-    alphabet_lower = {}
-
-    for i, char in enumerate(alphabet):
-        alphabet_lower[char] = i
-
-    result = ""
-    for i in range(len(s)):
-        if s[i].isdigit():
-            at = int(alphabet_lower[s[i-1]]) + int(s[i])
-            result += alphabet[at]
-        else:
-            result += s[i]
-
-    return result
-
-
-s = "a1c1e1"
-print(replaceDigits(s))
-s = "a1b2c3d4e"
-print(replaceDigits(s))
+nums = [2, 1, 2]
+print(largestPerimeter(nums))
+nums = [1, 2, 1, 10]
+print(largestPerimeter(nums))
