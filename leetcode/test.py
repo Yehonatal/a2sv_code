@@ -1,19 +1,16 @@
-def lengthOfLongestSubstring(s):
-    count = 0
-    seen = set()
-    start, end = 0, 0
+def subdomainVisits(cpdomains):
+    domain_hash = {}
 
-    while end < len(s):
-        while s[end] in seen:
-            seen.remove(s[start])
-            start += 1
+    for cpdomain in cpdomains:
+        rep, domains = cpdomain.split()
+        domain_hash[domains] = rep
 
-        seen.add(s[end])
-        end += 1
-        count = max(count, end - start)
-
-    return count
+    return domain_hash
 
 
-s = "abcabcbb"
-print(lengthOfLongestSubstring(s))
+cpdomains = ["9001 discuss.leetcode.com"]
+print(subdomainVisits(cpdomains))
+
+cpdomains = ["900 google.mail.com", "50 yahoo.com",
+             "1 intel.mail.com", "5 wiki.org"]
+print(subdomainVisits(cpdomains))
