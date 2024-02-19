@@ -1,10 +1,23 @@
-from collections import Counter
+def subdomainVisits(cpdomains):
+    domain_map = {}
+
+    for cpdomain in cpdomains:
+        rep, domains = cpdomain.split()
+        domains = domains.split(".")
+
+        if len(domains) == 3:
+            d1, d2, d3 = domains
+        elif len(domains) == 2:
+            d1, d2 = domains
+
+    # return cpdomains
+    ...
 
 
-def check(s):
-    unique = [x for (x, y) in Counter(s).items() if y == 1]
-    return unique[0] if unique else -1
+cpdomains = ["9001 discuss.leetcode.com"]
+print(subdomainVisits(cpdomains))
 
 
-print(check("leetcode"))
-print(check("lleettccooddee"))
+cpdomains = ["900 google.mail.com", "50 yahoo.com",
+             "1 intel.mail.com", "5 wiki.org"]
+print(subdomainVisits(cpdomains))
