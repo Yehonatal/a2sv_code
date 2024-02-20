@@ -1,18 +1,19 @@
-# from itertools import combinations
-
-# n, target = list(map(int, input().split()))
-# nums = list(map(int, input().split()))
-
-# found = [x for x in combinations([i for i in range(1, n+1)], 4) if sum([
-#     nums[y-1] for y in x]) == target]
-
-# if found:
-#     print(' '.join(map(str, found[0])))
-# else:
-#     print("IMPOSSIBLE")
-
-
 n, target = list(map(int, input().split()))
-nums = list(map(int, input().split()))
+arr = list(map(int, input().split()))
 
-pair_sums = {}
+store = {}
+
+for i, num in enumerate(arr):
+    for j in range(i + 1, len(arr)):
+        total = arr[i] + arr[j]
+
+        comp = target - total
+        if comp in store:
+            print(*store[comp], i + 1, j + 1)
+            exit()
+
+    for j in range(i):
+        total = arr[i] + arr[j]
+        store[total] = (j + 1, i + 1)
+
+print("IMPOSSIBLE")

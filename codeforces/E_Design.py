@@ -1,36 +1,22 @@
+from collections import defaultdict
+
 n, q = list(map(int, input().split()))
-
-
-mapper = {}
-
 words = input().split()
-for i, word in enumerate(words):
-    mapper[word] = i
 
-# words = input().split()
-# mapper = list(enumerate(words))
+pre_suf_i = defaultdict(lambda: -1)
+
+for index, word in enumerate(words):
+    pre = ''
+
+    for l in word:
+        pre += l
+
+        for i in range(len(word)):
+            suf = word[i:]
+            pre_suf_i[(pre, suf)] = index
 
 
 for _ in range(q):
-    pr, sf = input().split()
+    pre, suf = input().split()
 
-    # valid = [(index, word)
-    #          for index, word in mapper if word.startswith(pr) and word.endswith(sf)]
-
-    # if valid:
-    #     print(max(valid)[0])
-    # else:
-    #     print(-1)
-
-    largest = 0
-    is_found = False
-
-    for word, i in mapper.items():
-        if word.startswith(pr) and word.endswith(sf):
-            is_found = True
-            largest = max(largest, i)
-
-    if is_found:
-        print(largest)
-    else:
-        print(-1)
+    print(pre_suf_i[(pre, suf)])
