@@ -1,44 +1,13 @@
-class I:
-    # String
-    def inStr(self):
-        return input()
-
-    def strLen(self, word):
-        return len(word)
-
-    def inInt(self):
-        return int(input())
-
-    # List
-    def toList(self):
-        return list(map(int, input().split()))
-
-    def toStrList(self):
-        return list(map(str, input().split()))
-
-    def toList_(self, sign):
-        return list(map(int, input().split(sign)))
-
-    # string - set
-    def toSet(self):
-        return set([c for c in input()])
+def ribbon_num(n, x, y):
+    return min([x, y, n + 1 - x, n + 1 - y])
 
 
-i_obj = I()
+def min_energy():
+    n, x1, y1, x2, y2 = map(int, input().split())
 
-t = i_obj.inInt()
+    print(abs(ribbon_num(n, x1, y1) - ribbon_num(n, x2, y2)))
+
+
+t = int(input())
 for _ in range(t):
-    n, x1, y1, x2, y2 = i_obj.toList()
-
-    # layer for the first point
-    a = min(x1, y1)
-    b = min(n-x1 + 1, n-y1 + 1)
-    later1 = min(a, b)
-
-    # layer for the second point
-    c = min(x2, y2)
-    d = min(n - x2 + 1, n - y2 + 1)
-    layer2 = min(c, d)
-    #  diff layer1 and layer 2
-
-    print(abs(later1 - layer2))
+    min_energy()

@@ -1,23 +1,27 @@
-def subdomainVisits(cpdomains):
-    domain_map = {}
+def applyOps(nums):
 
-    for cpdomain in cpdomains:
-        rep, domains = cpdomain.split()
-        domains = domains.split(".")
+    for i in range(len(nums) - 1):
+        if nums[i] == nums[i+1]:
+            nums[i] *= 2
+            nums[i+1] = 0
 
-        if len(domains) == 3:
-            d1, d2, d3 = domains
-        elif len(domains) == 2:
-            d1, d2 = domains
+    zeros = nums.count(0)  # count the zeros
+    nums = [x for x in nums if x != 0]  # new list of ele that are not 0
+    nums.extend([0]*zeros)  # extend the list with the zeros attached
 
-    # return cpdomains
-    ...
+    return nums
 
 
-cpdomains = ["9001 discuss.leetcode.com"]
-print(subdomainVisits(cpdomains))
+""" 
+    # 1:
+        Time: O(n)
+        Space: O(n + m)
+
+"""
 
 
-cpdomains = ["900 google.mail.com", "50 yahoo.com",
-             "1 intel.mail.com", "5 wiki.org"]
-print(subdomainVisits(cpdomains))
+nums = [1, 2, 2, 1, 1, 0]
+print(applyOps(nums))
+
+nums = [0, 1]
+print(applyOps(nums))
