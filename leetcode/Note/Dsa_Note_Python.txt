@@ -1,0 +1,249 @@
+# Introduction to Data Structures
+
+    What is a Data Structure and Its Purpose?
+        - Is a scheme or a particular way in which data is stored and organized in a computer so it can be used effectively so the logical or mathematical model of a particular organization of data is called data structure.
+
+        # Problems for current application 
+            - Data Search 
+            - Processor Speed 
+            - Multiple request
+
+# Type of data structure :
+
+    # Primitive 
+    # Non-primitive     
+        1: Linear Data Structure
+        2: Non-Linear Data Structure.
+
+            Linear Data Structure:
+                Elements are arranged in one dimension ,also known as linear dimension. Memory is allocated in a continuous order in which data is stored and accessed in a linear sequential order 
+
+                Example: lists, stack, queue, linked lists, etc.
+
+            Non-Linear Data Structure
+                Elements are arranged in one-many, many-one and many-many dimensions. Memory allocation is random 
+
+                Example: tree, graph, table, etc.
+
+# Introduction to Algorithms 
+
+    What is an Algorithms?
+        - A well-defined computational procedure that produces output from a given input. For an algorithm to be deemed efficient it must solve the problem within the resource constraints.
+
+            # The Resource constraints
+                - Time: time taken by an algorithm to run as a function of the length of the input. 
+                - Space: memory taken by an algorithm to run as a function of the length of the input.
+
+# Time and Space Complexity
+    # what is Order of magnitude?
+    # What the difference between the cases
+        - Best (Omega)
+        - worst (O), Most used cause it gives us the upper limit
+        - average (theta)
+
+# Object-Oriented Programming
+    - What are the Goals, Principles and Patterns?
+
+
+    [Main Concept's]
+        - Class 
+                : blueprint, prototype from which the objects are being created.
+
+                class ClassName:
+                    # Statement-1
+                    .
+                    .
+                    .
+                    # Statement-N
+
+        - Objects
+                : an entity that has a state and behavior associated with the class.
+            -> Consists of 
+                - state, identity, behavior
+
+            [Nb]
+                -The Self 
+                    : first argument to be passed in Constructor and Instance Method.
+
+        - Inheritance
+                :Inheritance is the capability of one class to derive or inherit the properties from another class
+
+             [Different types of Inheritance:]
+                [Single] inheritance: 
+                    When a child class inherits from only one parent class, it is
+                    called single inheritance. We saw an example above.
+                [Multiple] inheritances: 
+                    When a child class inherits from multiple parent classes, 
+                    it is called multiple inheritances.
+                [Multilevel] Inheritance:
+                    the base class and the derived class are further inherited into the new 
+                    derived class. This is similar to a relationship representing a child and 
+                    a grandfather. 
+                [Hierarchical] Inheritance: 
+                    more than one derived class are created from a single base this type of 
+                    inheritance is called hierarchical inheritance
+                [Hybrid] Inheritance: 
+
+                syntax:
+                    Class BaseClass:
+                        {Body}
+                    Class DerivedClass(BaseClass):
+                        {Body}
+                    Class DerivedClassTwo(DerivedClass):
+                        {Body}
+
+
+
+        - Encapsulation
+        - Polymorphism
+        - Data Abstraction
+      
+# Array ( linear – Static ) & Hashing ( non-linear – static / dynamic )
+    
+    # Array [List]
+        [Things To know]
+            -> List's are mutable and tuple's are immutable
+                " mutable object is an object whose state can be modified after it is defined."
+
+                    Examples,
+                        Mutable -> List, Dict, set, Custom Class
+                        Immutable [easier code to debug] -> strings, tuple, frozenset([1,2,3,])
+
+            -> Methods in List 
+                -   list.append, list.extend, list.insert(i, x), 
+                    list.remove, list.pop, list.clear, list.index(x [, start[, end]])
+                    list.count, list.sort, list.reverse, list.copy 
+
+        [Other sequence data types that are similar]
+            -> Tuple's , tuple = (1,2,3,4,5, "cat")
+            -> Set's    , set = {1,2,2} 
+
+    # Hash Tables ( non-linear : static / dynamic ):
+            - Stores keys and associated values. 
+            - Uses a hash function to compute an index into an array, to get the desired value.
+
+        - Creation: 
+            Dictionaries are created by enclosing key-value pairs within curly braces. For example:
+
+                my_dict = {'name': 'John', 'age': 30, 'city': 'New York'}
+
+        - Accessing Elements: 
+            You can access values in a dictionary by specifying the corresponding key. For example:
+
+                name = my_dict['name']  # Access the value associated with the 'name' key ('John')
+
+        - Mutability: 
+            Dictionaries are mutable, meaning you can change the values associated with keys.
+                
+                my_dict['age'] = 31  # Update the 'age' value to 31
+
+
+        - Adding and Removing Elements: 
+                You can add new key-value pairs to a dictionary or remove existing ones.
+       
+                my_dict['occupation'] = 'Engineer'  # Add a new key-value pair
+                del my_dict['city']  # Remove the 'city' key-value pair
+
+
+        # Time Complexities:
+
+            Insertion and retrieval: O(1) on average (amortized), but can degrade to O(n) in rare cases of hash collisions.
+            Deletion: O(1) on average.
+            Searching for a key: O(1) on average.
+        
+        Space Complexity: is O(n), where n is the number of key-value pairs in the dictionary.
+
+# Recursion
+
+    Note:
+    recursive function uses LIFO (LAST IN FIRST OUT) Structure just like the stack data structure.
+    
+    The process in which a function calls itself directly or indirectly is called recursion and the corresponding function is called a recursive function.
+
+
+    # Properties
+        - same operation multiple times
+        - smaller inputs to make the problem smaller
+        - Base condition is needed to stop the recursion
+
+
+    # How are problems solved with recursion
+        idea is to represent a problem in terms of one or more smaller problems, and add one or more base conditions that stop the recursion.
+
+    # Overflow error
+        Stack overflow error occurs in recursions when the base case is not reached or not defined!
+
+
+    # Types of Recursions
+
+        # Direct
+            Calls its self.
+
+        # Indirectly
+            Calls another function
+
+            Ex.
+                void indirectRecFun1()
+                {
+                    // Some code...
+
+                    indirectRecFun2();
+
+                    // Some code...
+                }
+                void indirectRecFun2()
+                {
+                    // Some code...
+
+                    indirectRecFun1();
+
+                    // Some code...
+                }
+
+        # Tailed vs Non-tailed
+            when the recursive call is the last thing executed by the function
+
+    # Problems of recursive functions
+
+        - greater space requirement
+        - greater time requirement
+        - difficult code to understand
+
+
+    # Summary of Recursion:
+            #   There are two types of cases in recursion i.e. recursive
+                case and a base case.
+
+            #   The base case is used to terminate the recursive
+                function when the case turns out to be true.
+
+            #   Each recursive call makes a new copy of that method in
+                the stack memory.
+
+            #   Infinite recursion may lead to running out of stack memory.
+
+                Examples of Recursive algorithms:
+                Merge Sort, Quick Sort, Tower of Hanoi, Fibonacci Series, Factorial Problem, etc.
+
+# Strings
+    -> 
+
+# Stacks ( linear – dynamic ):
+	- Follows the Last In, First Out (LIFO) principle.
+	- Allows access to only the most recently added or removed item which is the peak element.
+
+# Queues ( linear – dynamic ): 
+	- Follows the First In, First Out (FIFO) principle. 
+	- Allows access to only the least recently added or removed item.
+
+# Linked Lists ( linear – dynamic ) :
+	- Collection of data elements, where each element points to the next one in the sequence. 
+	- Consists of nodes, each containing data and a reference to the next / previous node in the sequence.
+
+# Trees ( non-linear : hierarchical ):
+	- Structure consisting of nodes connected by edges. 
+	- Has a root node, and each node can have zero or more children nodes.
+
+# Graphs ( non-linear : hierarchical ):
+	- Nodes, called vertices, connected by edges. 
+	- Versatile data structure that allows for representing various real-world relationships.
