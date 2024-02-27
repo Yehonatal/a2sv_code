@@ -36,10 +36,13 @@ class BookAzori:
             print(self.head.title)
         else:
             print("None")
-        ...
 
     def see_books(self):
-        ...
+        current_top = self.head
+        while current_top:
+            print(current_top.title, end=" <- ")
+            current_top = current_top.prev
+        print("None")
 
 
 book_stack = BookAzori()
