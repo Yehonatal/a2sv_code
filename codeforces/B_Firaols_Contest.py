@@ -1,18 +1,19 @@
 n, m = list(map(int, input().split()))  # 1 - n and num of problems
 problems = list(map(int, input().split()))  # 1 round after else 0
 
-pool = []
-other = []
+pool = {}
 
 for p in problems:
-    if p not in pool:
-        pool.append(p)
+    if p in pool:
+        pool[p] += 1
     else:
-        other.append(p)
+        pool[p] = 1
 
-    if (len(pool) == n and max(pool) == n):
-        pool.clear()
-        pool.extend(other)
-        print("1", end='')
+    if len(pool) == n:
+        print(1, end="")
+        for level in range(1, n+1):
+            pool[level] = max(0, pool[level] - 1)
+            if not pool[level]:
+                pool.pop(level)
     else:
-        print("0", end='')
+        print(0, end="")

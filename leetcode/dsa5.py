@@ -1,26 +1,20 @@
-def findDiagonalOrder(mat):
-    volt = {}
+def sortPeople(names, heights):
+    n = len(heights)
 
-    for r in range(len(mat)):
-        for c in range(len(mat[0])):
-            s = r + c
-            if s not in volt:
-                volt[s] = [mat[r][c]]
-            else:
-                volt[s].append(mat[r][c])
+    for i in range(n - 1):
+        max_index = i
+        for j in range(i + 1, n):
+            if heights[j] > heights[max_index]:
+                max_index = j
 
-    res = []
+        # Swap heights
+        heights[i], heights[max_index] = heights[max_index], heights[i]
+        # Swap names accordingly
+        names[i], names[max_index] = names[max_index], names[i]
 
-    for zone, elem in volt.items():
-        if zone % 2 == 0:
-            res.extend(elem[::-1])
-        else:
-            res.extend(elem)
-
-    return res
+    return names, heights
 
 
-mat = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
-print(findDiagonalOrder(mat))  # Output: [1, 2, 4, 7, 5, 3, 6, 8, 9]
-mat = [[1, 2], [3, 4]]
-print(findDiagonalOrder(mat))  # Output: [1, 2, 3, 4]
+names = ["Mary", "John", "Emma"]
+heights = [180, 165, 170]
+print(sortPeople(names, heights))
