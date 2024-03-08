@@ -3,11 +3,7 @@ nums = list(map(int, input().split()))
 
 nums.sort()
 
-left = sum(nums[:n])
-right = sum(nums[n:])
-
-
-if left != right:
-    print(*nums)
-else:
+if nums[0] == nums[-1]:
     print(-1)
+else:
+    print(*nums)

@@ -11,12 +11,15 @@ for _ in range(t):
         print(-1)
     else:
         swaps = []
-        for i in range(n):
-            for j in range((n-1) - i):
-                if arr1[j] < arr1[j+1] and arr2[j] < arr2[j+1]:
-                    arr1[j], arr1[j+1] = arr1[j+1], arr1[j]
-                    arr2[j], arr2[j+1] = arr2[j+1], arr2[j]
-                    swaps.append([i, j+1])
+        swapped = True
+        while swapped:
+            swapped = False
+            for i in range(n - 1):
+                if arr1[i] > arr1[i+1] or arr2[i] > arr2[i+1]:
+                    arr1[i], arr1[i+1] = arr1[i+1], arr1[i]
+                    arr2[i], arr2[i+1] = arr2[i+1], arr2[i]
+                    swaps.append([i, i+1])
+                    swapped = True
 
         print(len(swaps))
         for swap in swaps:
