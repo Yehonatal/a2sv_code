@@ -1,23 +1,32 @@
-class Solution:
-    def minPairSum(self, nums: List[int]) -> int:
-        pairs_max = 0
-        nums.sort()  # O(nlogn)
-        left, right = 0, len(nums) - 1
+def longestMountain(arr):
+    # Base case
+    if len(arr) < 3:
+        return 0
 
-        while left < right:
-            pairs_max = max(pairs_max, nums[left] + nums[right])
-            left += 1
-            right -= 1
+    i = 0
+    mx_range = 0
 
-        return pairs_max
+    while i < len(arr) - 1:
+        # get to the lowest point
+        while i < len(arr) - 1 and arr[i] >= arr[i+1]:
+            i += 1
+        lowest = i  # the valley
+
+        # get to the peak
+        while i < len(arr) - 1 and arr[i] < arr[i+1]:
+            i += 1
+        peak = i  # the mountain top
+
+        # Decreasing into the valley again until we get a new bump
+        while i < len(arr) - 1 and arr[i] > arr[i+1]:
+            i += 1
+
+        if lowest < peak < i:
+            # check if the largest range you've got
+            mx_range = max(mx_range, i - lowest + 1)
+
+    return mx_range
 
 
-'''
-    # 1 :
-        What i did:
-            [3,5,4,2,4,6] sort it 
-            [2,3,4,5,6,2] pairs are picked using a inward walking pointers from the left and right side 
-            which would be mean their are a pair with a min,max value from the list
-            and just return the max pair count 
-
-'''
+arr = [2, 1, 4, 7, 3, 2, 5]
+print(longestMountain(arr))
