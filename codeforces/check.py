@@ -1,32 +1,43 @@
-def longestMountain(arr):
-    # Base case
-    if len(arr) < 3:
-        return 0
+def threeSum(nums):
+    if len(nums) < 3:
+        return []
 
-    i = 0
-    mx_range = 0
+    nums.sort()  # O(nlogn)
+    triplets = []
+    # choosing = X
+    for x in range(len(nums) - 2):
+        # Jump over cases where we have used an elem for x already
+        if x > 0 and nums[x] == nums[x-1]:
+            continue
 
-    while i < len(arr) - 1:
-        # get to the lowest point
-        while i < len(arr) - 1 and arr[i] >= arr[i+1]:
-            i += 1
-        lowest = i  # the valley
+        y = x + 1
+        z = len(nums) - 1
 
-        # get to the peak
-        while i < len(arr) - 1 and arr[i] < arr[i+1]:
-            i += 1
-        peak = i  # the mountain top
+        # choosing = Y & Z, This is just a normal twoSum solution with pointers
+        while y < z:
+            sm = nums[x] + nums[y] + nums[z]
+            if sm == 0:
+                triplets.append([nums[x], nums[y], nums[z]])
+                y += 1
+                z -= 1
 
-        # Decreasing into the valley again until we get a new bump
-        while i < len(arr) - 1 and arr[i] > arr[i+1]:
-            i += 1
+                # Jump over elem if we have used it as y before
+                while nums[y] == nums[y-1] and y < z:
+                    y += 1
+                # Jump over elem if we used it as z before
+                while nums[z] == nums[z+1] and y < z:
+                    z -= 1
+            elif sm < 0:
+                y += 1
+            else:
+                z -= 1
 
-        if lowest < peak < i:
-            # check if the largest range you've got
-            mx_range = max(mx_range, i - lowest + 1)
-
-    return mx_range
+    return triplets
 
 
-arr = [2, 1, 4, 7, 3, 2, 5]
-print(longestMountain(arr))
+nums = [-1, 0, 1, 2, -1, -4]
+print(threeSum(nums))
+nums = [0, 1, 1]
+print(threeSum(nums))
+nums = [1, 2, -2, -1]
+print(threeSum(nums))
