@@ -6,24 +6,16 @@ for _ in range(t):
     mums = list(map(int, input().split()))  # Sam
     nums.sort()
     mums.sort(reverse=True)
-    D = 0
-    i, j = 0, 0
 
-    while i < n and j < m:
-        while i < n and nums[i] < mums[j]:
-            D += mums[j] - nums[i]
-            i += 1
-            j += 1
+    diff = 0
+    for i in range(n):
+        diff += abs(mums[i-n] - nums[i])  # Find the initial largest diff
 
-        if i < n:
-            jump = n - i
-            j += min(jump, m - j)
-            if j < m:
-                while j < m and i < n and nums[i] > mums[j]:
-                    D += nums[i] - mums[j]
-                    i += 1
-                    j += 1
-            else:
-                break
+    curr = diff
+    for i in range(n):
+        curr -= abs(mums[i-n] - nums[i])
+        curr += abs(mums[i] - nums[i])
 
-    print(D)
+        diff = max(diff, curr)  # gets re updated with a larger diff if found
+
+    print(diff)
